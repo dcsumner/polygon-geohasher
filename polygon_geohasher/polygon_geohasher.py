@@ -42,7 +42,7 @@ def polygon_to_geohashes(polygon, precision, inner=True):
         if current_geohash not in inner_geohashes and current_geohash not in outer_geohashes:
             current_polygon = geohash_to_polygon(current_geohash)
 
-            condition = envelope.contains(current_polygon) if inner else envelope.intersects(current_polygon)
+            condition = envelope.contains(current_polygon) if inner else envelope.intersects(current_polygon) and not envelope.touches(current_polygon)
 
             if condition:
                 if inner:
