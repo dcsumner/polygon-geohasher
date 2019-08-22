@@ -51,7 +51,7 @@ def polygon_to_geohashes(polygon, precision, inner=True):
                     else:
                         outer_geohashes.add(current_geohash)
                 else:
-                    if polygon.intersects(current_polygon):
+                    if polygon.intersects(current_polygon) and not polygon.touches(current_polygon):
                         inner_geohashes.add(current_geohash)
                     else:
                         outer_geohashes.add(current_geohash)
